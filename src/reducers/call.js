@@ -1,8 +1,26 @@
-export function peer(state = {}, action) {
+export function call(state = {
+  form_id: ''
+}, action) {
   switch (action.type) {
+    case 'UPDATE_CALL_FORM':
+      return { 
+        ...state, 
+        form_id: action.form_id 
+      };
+    case 'CLEAR_CALL_FORM':
+      return { 
+        ...state, 
+        form_id: '' 
+      }; 
+    case 'SEND_CALL':
+      return { 
+        ...state, 
+      };
     case 'SEND_CALL': 
-      console.log('state', state)
-      return { ...state, peer: action.peer };
+      return { 
+        ...state, 
+        peer: action.peer 
+      };
     default: 
       return state
   }
