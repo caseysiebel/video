@@ -26,10 +26,15 @@ export function retrieve_call_streams(config) {
         dispatch(populate_local_stream(local_stream));
         config.local_stream = local_stream;
         console.log('getUserMedia')
+        console.log('!!config', config)
+        console.log('config.inbound', config.inbound)
+        console.log('config.outbound', config.outbound)
         if (config.outbound) {
+          console.log('outbound')
           dispatch(send_call(config));
         }
-        else if (config.indound) {
+        else if (config.inbound) {
+          console.log('in bound')
           dispatch(answer_call(config));
         }
       })
