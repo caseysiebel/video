@@ -5,11 +5,11 @@ import Header from './Header';
 import CallForm from './CallForm';
 import Video from './Video';
 
-import { initializePeer } from '../actions/peer';
+import { start } from '../actions/peer';
 
 class App extends Component {
   componentWillMount() {
-    this.props.initializePeer();
+    this.props.start();
   }
   render() {
     return (
@@ -25,7 +25,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => {
   return {
-    initializePeer: () => dispatch(initializePeer())
+    start: () => dispatch(start())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

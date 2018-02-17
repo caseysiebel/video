@@ -1,7 +1,10 @@
 export function peer(state = {}, action) {
   switch (action.type) {
     case 'INITIALIZE_PEER': 
-      return action.peer
+      return { ...state, peer: action.peer };
+      //return action.peer
+    case 'OPEN_CONNECTION':
+      return { ...state, id: action.id };
     default: 
       return state
   }
