@@ -1,9 +1,16 @@
 import React from 'react';
 
-const Header = () => (
+import { connect } from 'react-redux';
+
+const Header = (props) => (
   <header className="App-header">
-    <h1 className="App-title">Welcome to React</h1>
+    { props.id && <h1 className="App-title">{ props.id }</h1> }
   </header>
 );
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    id: state.peer.id
+  };
+};
+export default connect(mapStateToProps)(Header);
