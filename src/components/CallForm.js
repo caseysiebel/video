@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { sendCall } from '../actions/call';
-import { submitCallForm, updateCallForm } from '../actions/call';
+//import { send_call } from '../actions/call';
+import { submit_call_form, update_call_form } from '../actions/call';
 
 class CallForm extends React.Component {
   submitForm = (e) => {
     e.preventDefault();
-    this.props.submitCallForm(this.props.form_id);
+    this.props.submit_call_form(this.props.peer, this.props.form_id);
   }
   handleInputChange = (e) => {
     const id = e.currentTarget.value;
-    this.props.updateCallForm(id);
+    this.props.update_call_form(id);
     e.currentTarget.value = '';
   }
   render() {
@@ -26,14 +26,12 @@ class CallForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    peer: state.peer.peer,
     form_id: state.call.form_id 
   }
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sendCall: () => dispatch(sendCall()),
-    submitCallForm: () => dispatch(submitCallForm()),
-    updateCallForm: (id) => dispatch(updateCallForm(id))
-  }
-}
+const mapDispatchToProps = {
+    submit_call_form,
+    update_call_form
+};
 export default connect(mapStateToProps, mapDispatchToProps)(CallForm);
