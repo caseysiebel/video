@@ -20,6 +20,7 @@ export function retrieve_call_streams(config) {
       audio: true
     };
     console.log('get_local_stream')
+    console.log('config from retrieve_call_streams', config);
     navigator.mediaDevices.getUserMedia(constraints) 
       .then((local_stream) => {
         dispatch(populate_local_stream(local_stream));

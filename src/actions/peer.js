@@ -23,6 +23,7 @@ export function start() {
       return dispatch(openConnection(id));
     });
     peer.on('call', (call) => {
+      console.log('ON CALL!!!!!!')
       const config = {
         call,
         peer,

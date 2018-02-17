@@ -20,7 +20,9 @@ export function send_call(config) {
     id, 
     local_stream 
   } = config;
+  console.log('config', config)
   return (dispatch) => {
+    console.log('call to id', id)
     const call = peer.call(id, local_stream);
     call.on('stream', (remote_stream) => {
       dispatch(populate_remote_stream(remote_stream));
@@ -55,7 +57,8 @@ export function populate_call(call) {
 export function submit_call_form(peer, id) {
   const config = {
     peer,
-    outbound: id
+    id,
+    outbound: true
   };
   return (dispatch) => {
     dispatch(clear_call_form());

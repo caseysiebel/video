@@ -16,7 +16,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <CallForm />
-        <Video />
+        <Video title='THEM' />
+        <Video title='ME' />
       </div>
     );
   }
