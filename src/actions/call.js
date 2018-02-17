@@ -1,4 +1,4 @@
-import { get_local_stream, populate_remote_stream } from './stream';
+import { retrieve_call_streams, populate_remote_stream } from './stream';
 //import { inject_video_media } from './video';
 
 export function update_call_form(id) {
@@ -29,6 +29,22 @@ export function send_call(config) {
   };
 }
 
+export function answer_call(config) {
+  const { 
+    call,
+    local_stream 
+  } = config;
+  call.answer(local_stream);
+  // abstract handle stream
+  console.log('answer call')
+  call.on('stream',
+    (remote_stream) => {
+        populate_remote_stream(remote_stream);        
+    }, 
+    (err) => console.error(err)
+  );
+}
+
 export function populate_call(call) {
   return {
     type: 'POPULATE_CALL',
@@ -43,7 +59,7 @@ export function submit_call_form(peer, id) {
   };
   return (dispatch) => {
     dispatch(clear_call_form());
-    dispatch(get_local_stream(config));
+    dispatch(retrieve_call_streams(config));
   }
 }
 

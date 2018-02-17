@@ -25,9 +25,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {};
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    start: () => dispatch(start())
-  }
-}
+const mapDispatchToProps = {
+  start
+};
 export default connect(mapStateToProps, mapDispatchToProps)(App);

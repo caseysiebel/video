@@ -1,5 +1,7 @@
 import Peer from 'peerjs';
 
+import { retrieve_call_streams } from './stream';
+
 export function initializePeer(peer) {
   return {
     type: 'INITIALIZE_PEER',
@@ -17,9 +19,17 @@ export function openConnection(id) {
 export function start() {
   return (dispatch) => {
     const peer = new Peer({ key: 'lwjd5qra8257b9' });
-    dispatch(initializePeer(peer));
     peer.on('open', (id) => { 
       return dispatch(openConnection(id));
-    })
+    });
+    peer.on('call', (call) => {
+      const config = {
+        call,
+        peer,
+        inbound: true
+      };
+      dispatch(retrieve_call_streams(config));
+    });
+    dispatch(initializePeer(peer));
   }
 }

@@ -12,11 +12,13 @@ export function call(state = {
         ...state, 
         form_id: '' 
       }; 
+      /*
     case 'SEND_CALL': 
       return { 
         ...state, 
         peer: action.peer 
       };
+      */
     case 'POPULATE_CALL': 
       return {
         ...state, 

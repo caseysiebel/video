@@ -1,4 +1,4 @@
-import { send_call } from './call';
+import { send_call, answer_call } from './call';
 
 export function populate_remote_stream(remote_stream) {
   console.log('pop remote')
@@ -13,17 +13,24 @@ export function populate_local_stream(local_stream) {
     local_stream
   };
 }
-export function get_local_stream(config) {
+export function retrieve_call_streams(config) {
   return (dispatch) => {
     const constraints = {
       video: true,
       audio: true
     };
+    console.log('get_local_stream')
     navigator.mediaDevices.getUserMedia(constraints) 
       .then((local_stream) => {
         dispatch(populate_local_stream(local_stream));
         config.local_stream = local_stream;
-        dispatch(send_call(config));
+        console.log('getUserMedia')
+        if (config.outbound) {
+          dispatch(send_call(config));
+        }
+        else if (config.indound) {
+          dispatch(answer_call(config));
+        }
       })
       .catch((err) => console.log(err));
   }
