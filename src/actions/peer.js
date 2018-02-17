@@ -2,14 +2,14 @@ import Peer from 'peerjs';
 
 import { retrieve_call_streams } from './stream';
 
-export function initializePeer(peer) {
+export function initialize_peer(peer) {
   return {
     type: 'INITIALIZE_PEER',
     peer
   };
 }
 
-export function openConnection(id) {
+export function open_connection(id) {
   return {
     type: 'OPEN_CONNECTION',
     id
@@ -20,10 +20,9 @@ export function start() {
   return (dispatch) => {
     const peer = new Peer({ key: 'lwjd5qra8257b9' });
     peer.on('open', (id) => { 
-      return dispatch(openConnection(id));
+      return dispatch(open_connection(id));
     });
     peer.on('call', (call) => {
-      console.log('ON CALL!!!!!!')
       const config = {
         call,
         peer,
@@ -31,6 +30,6 @@ export function start() {
       };
       dispatch(retrieve_call_streams(config));
     });
-    dispatch(initializePeer(peer));
+    dispatch(initialize_peer(peer));
   }
 }
