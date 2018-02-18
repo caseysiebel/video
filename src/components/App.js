@@ -16,17 +16,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <CallForm />
-        <Video title='THEM' />
-        <Video title='ME' />
+        <Video />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const map_state = (state) => {
   return {};
 };
-const mapDispatchToProps = {
-  start
-};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const map_dispatch = { start };
+export default connect(map_state, map_dispatch)(App);

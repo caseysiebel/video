@@ -2,23 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Video extends React.Component {
-  componentWillUpdate(nextProps) {
-    const { local, remote } = nextProps;
-    if (this.props.title === 'THEM' &&  remote) {
-      this.vidElm.srcObject = remote;
-    }
-    if (this.props.title === 'ME' &&  local) {
-      this.vidElm.srcObject = local;
+  componentWillUpdate(next_props) {
+    const { remote } = next_props;
+    if (remote) {
+      this.vid_elm.srcObject = remote;
     }
   }
   render() {
     return (
-      <div style={{ 
-        display: 'inline-block',
-        width: '50%'
-      }}> 
-        <h1>{ this.props.title }</h1>
-        <video autoPlay ref={ vidElm => this.vidElm = vidElm }>
+      <div> 
+        <video autoPlay ref={ vid_elm => this.vid_elm = vid_elm }>
         </video>
       </div>
     );
@@ -27,7 +20,6 @@ class Video extends React.Component {
       
 const map_state = (state) => {
   return {
-    local: state.stream.local,
     remote: state.stream.remote  
   };
 }

@@ -6,7 +6,6 @@ export function stream(state = { }, action) {
         local: action.local_stream 
       };
     case 'POPULATE_REMOTE_STREAM': 
-      console.log('here')
       return {
         ...state,
         remote: action.remote_stream
