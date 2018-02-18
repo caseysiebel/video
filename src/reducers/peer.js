@@ -1,6 +1,6 @@
 export function peer(state = {}, action) {
   switch (action.type) {
-    case 'INITIALIZE_PEER': 
+    case 'POPULATE_PEER': 
       return { 
         ...state, 
         peer: action.peer 
