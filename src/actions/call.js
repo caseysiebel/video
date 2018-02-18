@@ -33,7 +33,6 @@ export function answer_call(config) {
   } = config;
   return (dispatch) => {
     call.answer(local_stream);
-    // abstract handle stream
     dispatch(handle_call(call));
   }
 }
@@ -67,4 +66,3 @@ export function submit_call_form(peer, id) {
     dispatch(retrieve_call_streams(config));
   }
 }
-
