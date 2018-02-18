@@ -18,7 +18,7 @@ export function open_connection(id) {
 
 export function start() {
   return (dispatch) => {
-    const peer = new Peer({ key: 'lwjd5qra8257b9' });
+    const peer = new Peer({ key: 'a62hi39sol4k7qfr' });
     peer.on('open', (id) => { 
       return dispatch(open_connection(id));
     });

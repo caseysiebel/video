@@ -11,7 +11,7 @@ class Video extends React.Component {
   render() {
     return (
       <div> 
-        <video autoPlay ref={ vid_elm => this.vid_elm = vid_elm }>
+        <video muted autoPlay ref={ vid_elm => this.vid_elm = vid_elm }>
         </video>
       </div>
     );
